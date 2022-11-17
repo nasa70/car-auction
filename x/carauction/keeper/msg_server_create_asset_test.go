@@ -1,15 +1,15 @@
 package keeper_test
 
 import (
-	"context"
+	//"context"
 	"testing"
 
-	keepertest "github.com/nasa70/car-auction/testutil/keeper"
-	"github.com/nasa70/car-auction/x/carauction"
-	"github.com/nasa70/car-auction/x/carauction/keeper"
+	//keepertest "github.com/nasa70/car-auction/testutil/keeper"
+	//"github.com/nasa70/car-auction/x/carauction"
+	//"github.com/nasa70/car-auction/x/carauction/keeper"
 	"github.com/nasa70/car-auction/x/carauction/types"
 
-	sdk "github.com/cosmos/cosmos-sdk/types"
+	//sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 )
 
@@ -19,18 +19,14 @@ const (
 	nasa  = "cosmos1e0w5t53nrq7p66fye6c8p0ynyhf6y24l4yuxd7"
 )
 
-const veryLongDecription = `1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890 \
-		1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890 \
-		1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890`
-
-func setupMsgServerCreateAsset(t testing.TB) (types.MsgServer, keeper.Keeper, context.Context) {
-	k, ctx := keepertest.CarauctionKeeper(t)
-	carauction.InitGenesis(ctx, *k, *types.DefaultGenesis())
-	return keeper.NewMsgServerImpl(*k), *k, sdk.WrapSDKContext(ctx)
-}
+//func setupMsgServerCreateAsset(t testing.TB) (types.MsgServer, keeper.Keeper, context.Context) {
+//	k, ctx := keepertest.CarauctionKeeper(t)
+//	carauction.InitGenesis(ctx, *k, *types.DefaultGenesis())
+//	return keeper.NewMsgServerImpl(*k), *k, sdk.WrapSDKContext(ctx)
+//}
 
 func TestCreateAsset(t *testing.T) {
-	msgServer, _, context := setupMsgServerCreateAsset(t)
+	msgServer, context := setupMsgServer(t)
 	createResponse, err := msgServer.CreateAsset(context, &types.MsgCreateAsset{
 		Creator:     nasa,
 		Description: "asset-1 description",
@@ -43,7 +39,7 @@ func TestCreateAsset(t *testing.T) {
 
 func TestCreateTwoAssets(t *testing.T) {
 
-	msgServer, _, context := setupMsgServerCreateAsset(t)
+	msgServer, context := setupMsgServer(t)
 	createResponse, err := msgServer.CreateAsset(context, &types.MsgCreateAsset{
 		Creator:     nasa,
 		Description: "asset-1 description",
