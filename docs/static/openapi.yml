@@ -10513,6 +10513,12 @@ paths:
               AuctionInfo:
                 type: object
                 properties:
+                  nextAssetId:
+                    type: string
+                    format: uint64
+                  nextLotId:
+                    type: string
+                    format: uint64
                   firstInQueueLotId:
                     type: string
                     format: uint64
@@ -22134,6 +22140,12 @@ definitions:
   nasa70.carauction.carauction.AuctionInfo:
     type: object
     properties:
+      nextAssetId:
+        type: string
+        format: uint64
+      nextLotId:
+        type: string
+        format: uint64
       firstInQueueLotId:
         type: string
         format: uint64
@@ -22183,6 +22195,12 @@ definitions:
         items:
           type: string
           format: uint64
+  nasa70.carauction.carauction.MsgCreateAssetResponse:
+    type: object
+    properties:
+      assetId:
+        type: string
+        format: uint64
   nasa70.carauction.carauction.Params:
     type: object
     description: Params defines the parameters for the module.
@@ -22330,6 +22348,12 @@ definitions:
       AuctionInfo:
         type: object
         properties:
+          nextAssetId:
+            type: string
+            format: uint64
+          nextLotId:
+            type: string
+            format: uint64
           firstInQueueLotId:
             type: string
             format: uint64

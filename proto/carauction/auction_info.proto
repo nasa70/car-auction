@@ -4,8 +4,10 @@ package nasa70.carauction.carauction;
 option go_package = "github.com/nasa70/car-auction/x/carauction/types";
 
 message AuctionInfo {
-  uint64 firstInQueueLotId = 1; 
-  uint64 lastInQueueLotId = 2; 
-  uint64 firstFinishTime = 3; 
+  uint64 nextAssetId = 1;
+  uint64 nextLotId = 2;
+  uint64 firstInQueueLotId = 3; 
+  uint64 lastInQueueLotId = 4; 
+  uint64 firstFinishTime = 5; 
   
 }

@@ -13,6 +13,8 @@ func DefaultGenesis() *GenesisState {
 		LotsList:   []Lots{},
 		AssetsList: []Assets{},
 		AuctionInfo: &AuctionInfo{
+			NextAssetId:       1,
+			NextLotId:         1,
 			FirstInQueueLotId: 0,
 			LastInQueueLotId:  0,
 			FirstFinishTime:   0,

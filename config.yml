@@ -4,7 +4,7 @@ init:
     moniker: "nasa-node-1"
     create_empty_blocks: false
   client:
-    chain-id: "car-auction"
+    chain-id: "carauction"
 accounts:
   - name: alice
     coins: ["20000token", "200000000stake"]

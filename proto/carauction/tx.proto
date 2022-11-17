@@ -7,7 +7,17 @@ option go_package = "github.com/nasa70/car-auction/x/carauction/types";
 
 // Msg defines the Msg service.
 service Msg {
-    // this line is used by starport scaffolding # proto/tx/rpc
+      rpc CreateAsset(MsgCreateAsset) returns (MsgCreateAssetResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreateAsset {
+  string creator = 1;
+  string description = 2;
+}
+
+message MsgCreateAssetResponse {
+  uint64 assetId = 1;
 }
 
 // this line is used by starport scaffolding # proto/tx/message

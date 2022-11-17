@@ -8,5 +8,6 @@ import (
 
 // x/carauction module sentinel errors
 var (
-	ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
+	ErrAssetNotFound      = sdkerrors.Register(ModuleName, 1100, "asset by id not found")
+	ErrAssetAlreadyExists = sdkerrors.Register(ModuleName, 1101, "an asset with the same id already exists")
 )
