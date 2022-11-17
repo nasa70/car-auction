@@ -27,12 +27,12 @@ func TestLotsQuerySingle(t *testing.T) {
 	}{
 		{
 			desc:     "First",
-			request:  &types.QueryGetLotsRequest{Id: msgs[0].Id},
+			request:  &types.QueryGetLotsRequest{Id: msgs[0].LotId},
 			response: &types.QueryGetLotsResponse{Lots: msgs[0]},
 		},
 		{
 			desc:     "Second",
-			request:  &types.QueryGetLotsRequest{Id: msgs[1].Id},
+			request:  &types.QueryGetLotsRequest{Id: msgs[1].LotId},
 			response: &types.QueryGetLotsResponse{Lots: msgs[1]},
 		},
 		{

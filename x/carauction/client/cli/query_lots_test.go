@@ -25,7 +25,7 @@ func networkWithLotsObjects(t *testing.T, n int) (*network.Network, []types.Lots
 
 	for i := 0; i < n; i++ {
 		lots := types.Lots{
-			Id: uint64(i),
+			LotId: uint64(i),
 		}
 		nullify.Fill(&lots)
 		state.LotsList = append(state.LotsList, lots)
@@ -52,7 +52,7 @@ func TestShowLots(t *testing.T) {
 	}{
 		{
 			desc: "found",
-			id:   fmt.Sprintf("%d", objs[0].Id),
+			id:   fmt.Sprintf("%d", objs[0].LotId),
 			args: common,
 			obj:  objs[0],
 		},

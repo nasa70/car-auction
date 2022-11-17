@@ -14,7 +14,7 @@ import (
 func createNAssets(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.Assets {
 	items := make([]types.Assets, n)
 	for i := range items {
-		items[i].Id = keeper.AppendAssets(ctx, items[i])
+		items[i].AssetId = keeper.AppendAssets(ctx, items[i])
 	}
 	return items
 }
@@ -23,7 +23,7 @@ func TestAssetsGet(t *testing.T) {
 	keeper, ctx := keepertest.CarauctionKeeper(t)
 	items := createNAssets(keeper, ctx, 10)
 	for _, item := range items {
-		got, found := keeper.GetAssets(ctx, item.Id)
+		got, found := keeper.GetAssets(ctx, item.AssetId)
 		require.True(t, found)
 		require.Equal(t,
 			nullify.Fill(&item),
@@ -36,8 +36,8 @@ func TestAssetsRemove(t *testing.T) {
 	keeper, ctx := keepertest.CarauctionKeeper(t)
 	items := createNAssets(keeper, ctx, 10)
 	for _, item := range items {
-		keeper.RemoveAssets(ctx, item.Id)
-		_, found := keeper.GetAssets(ctx, item.Id)
+		keeper.RemoveAssets(ctx, item.AssetId)
+		_, found := keeper.GetAssets(ctx, item.AssetId)
 		require.False(t, found)
 	}
 }

@@ -13,8 +13,6 @@ func DefaultGenesis() *GenesisState {
 		LotsList:   []Lots{},
 		AssetsList: []Assets{},
 		AuctionInfo: &AuctionInfo{
-			NextAssetId:       1,
-			NextLotId:         1,
 			FirstInQueueLotId: 0,
 			LastInQueueLotId:  0,
 			FirstFinishTime:   0,
@@ -31,25 +29,25 @@ func (gs GenesisState) Validate() error {
 	lotsIdMap := make(map[uint64]bool)
 	lotsCount := gs.GetLotsCount()
 	for _, elem := range gs.LotsList {
-		if _, ok := lotsIdMap[elem.Id]; ok {
+		if _, ok := lotsIdMap[elem.LotId]; ok {
 			return fmt.Errorf("duplicated id for lots")
 		}
-		if elem.Id >= lotsCount {
+		if elem.LotId >= lotsCount {
 			return fmt.Errorf("lots id should be lower or equal than the last id")
 		}
-		lotsIdMap[elem.Id] = true
+		lotsIdMap[elem.LotId] = true
 	}
 	// Check for duplicated ID in assets
 	assetsIdMap := make(map[uint64]bool)
 	assetsCount := gs.GetAssetsCount()
 	for _, elem := range gs.AssetsList {
-		if _, ok := assetsIdMap[elem.Id]; ok {
+		if _, ok := assetsIdMap[elem.AssetId]; ok {
 			return fmt.Errorf("duplicated id for assets")
 		}
-		if elem.Id >= assetsCount {
+		if elem.AssetId >= assetsCount {
 			return fmt.Errorf("assets id should be lower or equal than the last id")
 		}
-		assetsIdMap[elem.Id] = true
+		assetsIdMap[elem.AssetId] = true
 	}
 	// this line is used by starport scaffolding # genesis/types/validate
 

@@ -39,16 +39,17 @@ func (k Keeper) AppendLots(
 ) uint64 {
 	// Create the lots
 	count := k.GetLotsCount(ctx)
+	count++
 
 	// Set the ID of the appended value
-	lots.Id = count
+	lots.LotId = count
 
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.LotsKey))
 	appendedValue := k.cdc.MustMarshal(&lots)
-	store.Set(GetLotsIDBytes(lots.Id), appendedValue)
+	store.Set(GetLotsIDBytes(lots.LotId), appendedValue)
 
 	// Update lots count
-	k.SetLotsCount(ctx, count+1)
+	k.SetLotsCount(ctx, count)
 
 	return count
 }
@@ -57,7 +58,7 @@ func (k Keeper) AppendLots(
 func (k Keeper) SetLots(ctx sdk.Context, lots types.Lots) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.LotsKey))
 	b := k.cdc.MustMarshal(&lots)
-	store.Set(GetLotsIDBytes(lots.Id), b)
+	store.Set(GetLotsIDBytes(lots.LotId), b)
 }
 
 // GetLots returns a lots from its id

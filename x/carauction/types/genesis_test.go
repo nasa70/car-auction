@@ -24,26 +24,26 @@ func TestGenesisState_Validate(t *testing.T) {
 
 				LotsList: []types.Lots{
 					{
-						Id: 0,
+						LotId: 1,
 					},
 					{
-						Id: 1,
+						LotId: 2,
 					},
 				},
 				LotsCount: 2,
 				AssetsList: []types.Assets{
 					{
-						Id: 0,
+						AssetId: 1,
 					},
 					{
-						Id: 1,
+						AssetId: 2,
 					},
 				},
 				AssetsCount: 2,
 				AuctionInfo: &types.AuctionInfo{
-					FirstInQueueLotId: 52,
-					LastInQueueLotId:  89,
-					FirstFinishTime:   66,
+					FirstInQueueLotId: 0,
+					LastInQueueLotId:  0,
+					FirstFinishTime:   0,
 				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
@@ -54,10 +54,10 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				LotsList: []types.Lots{
 					{
-						Id: 0,
+						LotId: 1,
 					},
 					{
-						Id: 0,
+						LotId: 1,
 					},
 				},
 			},
@@ -68,7 +68,7 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				LotsList: []types.Lots{
 					{
-						Id: 1,
+						LotId: 1,
 					},
 				},
 				LotsCount: 0,
@@ -80,10 +80,10 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				AssetsList: []types.Assets{
 					{
-						Id: 0,
+						AssetId: 1,
 					},
 					{
-						Id: 0,
+						AssetId: 1,
 					},
 				},
 			},
@@ -94,7 +94,7 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				AssetsList: []types.Assets{
 					{
-						Id: 1,
+						AssetId: 1,
 					},
 				},
 				AssetsCount: 0,

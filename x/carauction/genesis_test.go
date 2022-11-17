@@ -16,19 +16,19 @@ func TestGenesis(t *testing.T) {
 
 		LotsList: []types.Lots{
 			{
-				Id: 0,
+				LotId: 1,
 			},
 			{
-				Id: 1,
+				LotId: 2,
 			},
 		},
 		LotsCount: 2,
 		AssetsList: []types.Assets{
 			{
-				Id: 0,
+				AssetId: 0,
 			},
 			{
-				Id: 1,
+				AssetId: 1,
 			},
 		},
 		AssetsCount: 2,

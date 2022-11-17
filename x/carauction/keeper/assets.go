@@ -41,23 +41,23 @@ func (k Keeper) AppendAssets(
 	count := k.GetAssetsCount(ctx)
 
 	// Set the ID of the appended value
-	assets.Id = count
+	assets.AssetId = count + 1
 
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.AssetsKey))
 	appendedValue := k.cdc.MustMarshal(&assets)
-	store.Set(GetAssetsIDBytes(assets.Id), appendedValue)
+	store.Set(GetAssetsIDBytes(assets.AssetId), appendedValue)
 
 	// Update assets count
 	k.SetAssetsCount(ctx, count+1)
 
-	return count
+	return count + 1
 }
 
 // SetAssets set a specific assets in the store
 func (k Keeper) SetAssets(ctx sdk.Context, assets types.Assets) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.AssetsKey))
 	b := k.cdc.MustMarshal(&assets)
-	store.Set(GetAssetsIDBytes(assets.Id), b)
+	store.Set(GetAssetsIDBytes(assets.AssetId), b)
 }
 
 // GetAssets returns a assets from its id

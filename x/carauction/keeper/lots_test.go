@@ -14,7 +14,7 @@ import (
 func createNLots(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.Lots {
 	items := make([]types.Lots, n)
 	for i := range items {
-		items[i].Id = keeper.AppendLots(ctx, items[i])
+		items[i].LotId = keeper.AppendLots(ctx, items[i])
 	}
 	return items
 }
@@ -23,7 +23,7 @@ func TestLotsGet(t *testing.T) {
 	keeper, ctx := keepertest.CarauctionKeeper(t)
 	items := createNLots(keeper, ctx, 10)
 	for _, item := range items {
-		got, found := keeper.GetLots(ctx, item.Id)
+		got, found := keeper.GetLots(ctx, item.LotId)
 		require.True(t, found)
 		require.Equal(t,
 			nullify.Fill(&item),
@@ -36,8 +36,8 @@ func TestLotsRemove(t *testing.T) {
 	keeper, ctx := keepertest.CarauctionKeeper(t)
 	items := createNLots(keeper, ctx, 10)
 	for _, item := range items {
-		keeper.RemoveLots(ctx, item.Id)
-		_, found := keeper.GetLots(ctx, item.Id)
+		keeper.RemoveLots(ctx, item.LotId)
+		_, found := keeper.GetLots(ctx, item.LotId)
 		require.False(t, found)
 	}
 }

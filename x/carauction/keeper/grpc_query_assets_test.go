@@ -27,12 +27,12 @@ func TestAssetsQuerySingle(t *testing.T) {
 	}{
 		{
 			desc:     "First",
-			request:  &types.QueryGetAssetsRequest{Id: msgs[0].Id},
+			request:  &types.QueryGetAssetsRequest{Id: msgs[0].AssetId},
 			response: &types.QueryGetAssetsResponse{Assets: msgs[0]},
 		},
 		{
 			desc:     "Second",
-			request:  &types.QueryGetAssetsRequest{Id: msgs[1].Id},
+			request:  &types.QueryGetAssetsRequest{Id: msgs[1].AssetId},
 			response: &types.QueryGetAssetsResponse{Assets: msgs[1]},
 		},
 		{

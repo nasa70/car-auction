@@ -10331,9 +10331,6 @@ paths:
                 items:
                   type: object
                   properties:
-                    id:
-                      type: string
-                      format: uint64
                     assetId:
                       type: string
                       format: uint64
@@ -10461,9 +10458,6 @@ paths:
               Assets:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    format: uint64
                   assetId:
                     type: string
                     format: uint64
@@ -10513,12 +10507,6 @@ paths:
               AuctionInfo:
                 type: object
                 properties:
-                  nextAssetId:
-                    type: string
-                    format: uint64
-                  nextLotId:
-                    type: string
-                    format: uint64
                   firstInQueueLotId:
                     type: string
                     format: uint64
@@ -10563,9 +10551,6 @@ paths:
                 items:
                   type: object
                   properties:
-                    id:
-                      type: string
-                      format: uint64
                     lotId:
                       type: string
                       format: uint64
@@ -10720,9 +10705,6 @@ paths:
               Lots:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    format: uint64
                   lotId:
                     type: string
                     format: uint64
@@ -22124,9 +22106,6 @@ definitions:
   nasa70.carauction.carauction.Assets:
     type: object
     properties:
-      id:
-        type: string
-        format: uint64
       assetId:
         type: string
         format: uint64
@@ -22140,12 +22119,6 @@ definitions:
   nasa70.carauction.carauction.AuctionInfo:
     type: object
     properties:
-      nextAssetId:
-        type: string
-        format: uint64
-      nextLotId:
-        type: string
-        format: uint64
       firstInQueueLotId:
         type: string
         format: uint64
@@ -22158,9 +22131,6 @@ definitions:
   nasa70.carauction.carauction.Lots:
     type: object
     properties:
-      id:
-        type: string
-        format: uint64
       lotId:
         type: string
         format: uint64
@@ -22212,9 +22182,6 @@ definitions:
         items:
           type: object
           properties:
-            id:
-              type: string
-              format: uint64
             assetId:
               type: string
               format: uint64
@@ -22258,9 +22225,6 @@ definitions:
         items:
           type: object
           properties:
-            id:
-              type: string
-              format: uint64
             lotId:
               type: string
               format: uint64
@@ -22329,9 +22293,6 @@ definitions:
       Assets:
         type: object
         properties:
-          id:
-            type: string
-            format: uint64
           assetId:
             type: string
             format: uint64
@@ -22348,12 +22309,6 @@ definitions:
       AuctionInfo:
         type: object
         properties:
-          nextAssetId:
-            type: string
-            format: uint64
-          nextLotId:
-            type: string
-            format: uint64
           firstInQueueLotId:
             type: string
             format: uint64
@@ -22369,9 +22324,6 @@ definitions:
       Lots:
         type: object
         properties:
-          id:
-            type: string
-            format: uint64
           lotId:
             type: string
             format: uint64

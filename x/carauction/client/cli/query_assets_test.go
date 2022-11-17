@@ -25,7 +25,7 @@ func networkWithAssetsObjects(t *testing.T, n int) (*network.Network, []types.As
 
 	for i := 0; i < n; i++ {
 		assets := types.Assets{
-			Id: uint64(i),
+			AssetId: uint64(i),
 		}
 		nullify.Fill(&assets)
 		state.AssetsList = append(state.AssetsList, assets)
@@ -52,7 +52,7 @@ func TestShowAssets(t *testing.T) {
 	}{
 		{
 			desc: "found",
-			id:   fmt.Sprintf("%d", objs[0].Id),
+			id:   fmt.Sprintf("%d", objs[0].AssetId),
 			args: common,
 			obj:  objs[0],
 		},
