@@ -1,0 +1,20 @@
+syntax = "proto3";
+package nasa70.carauction.carauction;
+
+option go_package = "github.com/nasa70/car-auction/x/carauction/types";
+import "gogoproto/gogo.proto"; 
+import "cosmos/base/v1beta1/coin.proto"; 
+
+message Lots {
+  uint64 id = 1;
+  uint64 lotId = 2; 
+  string owner = 3; 
+  uint64 startTime = 4; 
+  uint64 finishTime = 5; 
+  bool opened = 6; 
+  bool approved = 7; 
+  cosmos.base.v1beta1.Coin bid = 8 [(gogoproto.nullable) = false]; 
+  string bidOwner = 9; 
+  repeated uint64 assets = 10; 
+  
+}

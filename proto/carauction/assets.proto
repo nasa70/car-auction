@@ -1,0 +1,13 @@
+syntax = "proto3";
+package nasa70.carauction.carauction;
+
+option go_package = "github.com/nasa70/car-auction/x/carauction/types";
+
+message Assets {
+  uint64 id = 1;
+  uint64 assetId = 2; 
+  string owner = 3; 
+  string description = 4; 
+  uint64 lotId = 5; 
+  
+}

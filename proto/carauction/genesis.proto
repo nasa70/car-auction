@@ -3,6 +3,9 @@ package nasa70.carauction.carauction;
 
 import "gogoproto/gogo.proto";
 import "carauction/params.proto";
+import "carauction/lots.proto";
+import "carauction/assets.proto";
+import "carauction/auction_info.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/nasa70/car-auction/x/carauction/types";
@@ -10,5 +13,10 @@ option go_package = "github.com/nasa70/car-auction/x/carauction/types";
 // GenesisState defines the carauction module's genesis state.
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
+  repeated Lots lotsList = 2 [(gogoproto.nullable) = false];
+  uint64 lotsCount = 3;
+  repeated Assets assetsList = 4 [(gogoproto.nullable) = false];
+  uint64 assetsCount = 5;
+  AuctionInfo auctionInfo = 6;
   // this line is used by starport scaffolding # genesis/proto/state
 }

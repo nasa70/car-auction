@@ -1,16 +1,21 @@
+init:
+  home: "/home/nasa/cosmos-sdk-test/car-auction/.bc-car-auction-data"
+  config:
+    moniker: "nasa-node-1"
+    create_empty_blocks: false
+  client:
+    chain-id: "car-auction"
 accounts:
   - name: alice
     coins: ["20000token", "200000000stake"]
   - name: bob
     coins: ["10000token", "100000000stake"]
+  - name: nasa
+    coins: ["30000token", "300000000stake"]
 validator:
-  name: alice
-  staked: "100000000stake"
+  name: nasa
+  staked: "150000000stake"
 client:
   openapi:
     path: "docs/static/openapi.yml"
-  vuex:
-    path: "vue/src/store"
-faucet:
-  name: bob
-  coins: ["5token", "100000stake"]
+

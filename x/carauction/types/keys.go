@@ -20,3 +20,17 @@ const (
 func KeyPrefix(p string) []byte {
 	return []byte(p)
 }
+
+const (
+	LotsKey      = "Lots-value-"
+	LotsCountKey = "Lots-count-"
+)
+
+const (
+	AssetsKey      = "Assets-value-"
+	AssetsCountKey = "Assets-count-"
+)
+
+const (
+	AuctionInfoKey = "AuctionInfo-value-"
+)
