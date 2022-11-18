@@ -6,6 +6,8 @@ package types
 import (
 	context "context"
 	fmt "fmt"
+	types "github.com/cosmos/cosmos-sdk/types"
+	_ "github.com/gogo/protobuf/gogoproto"
 	grpc1 "github.com/gogo/protobuf/grpc"
 	proto "github.com/gogo/protobuf/proto"
 	grpc "google.golang.org/grpc"
@@ -219,36 +221,150 @@ func (m *MsgCreateLotResponse) GetLotId() uint64 {
 	return 0
 }
 
+type MsgStartBidding struct {
+	Creator    string     `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	LotId      uint64     `protobuf:"varint,2,opt,name=lotId,proto3" json:"lotId,omitempty"`
+	FinishTime uint64     `protobuf:"varint,3,opt,name=finishTime,proto3" json:"finishTime,omitempty"`
+	Bid        types.Coin `protobuf:"bytes,4,opt,name=bid,proto3" json:"bid"`
+}
+
+func (m *MsgStartBidding) Reset()         { *m = MsgStartBidding{} }
+func (m *MsgStartBidding) String() string { return proto.CompactTextString(m) }
+func (*MsgStartBidding) ProtoMessage()    {}
+func (*MsgStartBidding) Descriptor() ([]byte, []int) {
+	return fileDescriptor_41b8193204bdaca7, []int{4}
+}
+func (m *MsgStartBidding) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgStartBidding) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgStartBidding.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgStartBidding) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgStartBidding.Merge(m, src)
+}
+func (m *MsgStartBidding) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgStartBidding) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgStartBidding.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgStartBidding proto.InternalMessageInfo
+
+func (m *MsgStartBidding) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgStartBidding) GetLotId() uint64 {
+	if m != nil {
+		return m.LotId
+	}
+	return 0
+}
+
+func (m *MsgStartBidding) GetFinishTime() uint64 {
+	if m != nil {
+		return m.FinishTime
+	}
+	return 0
+}
+
+func (m *MsgStartBidding) GetBid() types.Coin {
+	if m != nil {
+		return m.Bid
+	}
+	return types.Coin{}
+}
+
+type MsgStartBiddingResponse struct {
+}
+
+func (m *MsgStartBiddingResponse) Reset()         { *m = MsgStartBiddingResponse{} }
+func (m *MsgStartBiddingResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgStartBiddingResponse) ProtoMessage()    {}
+func (*MsgStartBiddingResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_41b8193204bdaca7, []int{5}
+}
+func (m *MsgStartBiddingResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgStartBiddingResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgStartBiddingResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgStartBiddingResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgStartBiddingResponse.Merge(m, src)
+}
+func (m *MsgStartBiddingResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgStartBiddingResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgStartBiddingResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgStartBiddingResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgCreateAsset)(nil), "nasa70.carauction.carauction.MsgCreateAsset")
 	proto.RegisterType((*MsgCreateAssetResponse)(nil), "nasa70.carauction.carauction.MsgCreateAssetResponse")
 	proto.RegisterType((*MsgCreateLot)(nil), "nasa70.carauction.carauction.MsgCreateLot")
 	proto.RegisterType((*MsgCreateLotResponse)(nil), "nasa70.carauction.carauction.MsgCreateLotResponse")
+	proto.RegisterType((*MsgStartBidding)(nil), "nasa70.carauction.carauction.MsgStartBidding")
+	proto.RegisterType((*MsgStartBiddingResponse)(nil), "nasa70.carauction.carauction.MsgStartBiddingResponse")
 }
 
 func init() { proto.RegisterFile("carauction/tx.proto", fileDescriptor_41b8193204bdaca7) }
 
 var fileDescriptor_41b8193204bdaca7 = []byte{
-	// 293 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x4e, 0x4e, 0x2c, 0x4a,
-	0x2c, 0x4d, 0x2e, 0xc9, 0xcc, 0xcf, 0xd3, 0x2f, 0xa9, 0xd0, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17,
-	0x92, 0xc9, 0x4b, 0x2c, 0x4e, 0x34, 0x37, 0xd0, 0x43, 0xc8, 0x21, 0x31, 0x95, 0x7c, 0xb8, 0xf8,
-	0x7c, 0x8b, 0xd3, 0x9d, 0x8b, 0x52, 0x13, 0x4b, 0x52, 0x1d, 0x8b, 0x8b, 0x53, 0x4b, 0x84, 0x24,
-	0xb8, 0xd8, 0x93, 0x41, 0xdc, 0xfc, 0x22, 0x09, 0x46, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x18, 0x57,
-	0x48, 0x81, 0x8b, 0x3b, 0x25, 0xb5, 0x38, 0xb9, 0x28, 0xb3, 0x00, 0xa4, 0x55, 0x82, 0x09, 0x2c,
-	0x8b, 0x2c, 0xa4, 0x64, 0xc4, 0x25, 0x86, 0x6a, 0x5a, 0x50, 0x6a, 0x71, 0x41, 0x7e, 0x5e, 0x71,
-	0x2a, 0xc8, 0xd4, 0x44, 0x90, 0x80, 0x67, 0x0a, 0xd8, 0x54, 0x96, 0x20, 0x18, 0x57, 0xc9, 0x81,
-	0x8b, 0x07, 0xae, 0xc7, 0x27, 0x1f, 0x9f, 0xfd, 0x62, 0x5c, 0x6c, 0x60, 0x4d, 0xc5, 0x12, 0x4c,
-	0x0a, 0xcc, 0x1a, 0x2c, 0x41, 0x50, 0x9e, 0x92, 0x0e, 0x97, 0x08, 0xb2, 0x09, 0x70, 0x3b, 0x45,
-	0xb8, 0x58, 0x73, 0xf2, 0x11, 0x36, 0x42, 0x38, 0x46, 0x4f, 0x19, 0xb9, 0x98, 0x7d, 0x8b, 0xd3,
-	0x85, 0x0a, 0xb9, 0xb8, 0x91, 0xbd, 0xad, 0xa3, 0x87, 0x2f, 0x9c, 0xf4, 0x50, 0xbd, 0x25, 0x65,
-	0x42, 0x8a, 0x6a, 0xb8, 0x83, 0xb2, 0xb9, 0x38, 0x11, 0xfe, 0xd4, 0x22, 0xd2, 0x08, 0x9f, 0xfc,
-	0x12, 0x29, 0x23, 0xe2, 0xd5, 0xc2, 0x2c, 0x73, 0xf2, 0x3a, 0xf1, 0x48, 0x8e, 0xf1, 0xc2, 0x23,
-	0x39, 0xc6, 0x07, 0x8f, 0xe4, 0x18, 0x27, 0x3c, 0x96, 0x63, 0xb8, 0xf0, 0x58, 0x8e, 0xe1, 0xc6,
-	0x63, 0x39, 0x86, 0x28, 0x83, 0xf4, 0xcc, 0x92, 0x8c, 0xd2, 0x24, 0xbd, 0xe4, 0xfc, 0x5c, 0x7d,
-	0x88, 0xb9, 0xfa, 0xc9, 0x89, 0x45, 0xba, 0xb0, 0x94, 0x53, 0xa1, 0x8f, 0x9c, 0x8c, 0x2a, 0x0b,
-	0x52, 0x8b, 0x93, 0xd8, 0xc0, 0x49, 0xc9, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0xca, 0x4f, 0x2d,
-	0x58, 0x61, 0x02, 0x00, 0x00,
+	// 432 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x53, 0x4d, 0x6f, 0xd3, 0x40,
+	0x10, 0x8d, 0x3f, 0x28, 0xea, 0xa4, 0x02, 0xc9, 0x44, 0xc5, 0xb5, 0xd0, 0x62, 0xf9, 0x14, 0xa1,
+	0x76, 0xb7, 0x31, 0x20, 0xae, 0x90, 0x9e, 0x40, 0xc9, 0xc5, 0x70, 0xe2, 0xb6, 0x5e, 0x2f, 0xee,
+	0x0a, 0xe2, 0x35, 0xde, 0x2d, 0x2a, 0xff, 0x82, 0x03, 0x3f, 0xaa, 0xc7, 0x1e, 0x91, 0x90, 0x10,
+	0x4a, 0xfe, 0x08, 0xb2, 0x5d, 0x3b, 0x1b, 0x0e, 0x69, 0x73, 0x9b, 0x37, 0xf3, 0xe6, 0x3d, 0xdb,
+	0xcf, 0x03, 0x8f, 0x18, 0xad, 0xe8, 0x05, 0xd3, 0x42, 0x16, 0x44, 0x5f, 0xe2, 0xb2, 0x92, 0x5a,
+	0x7a, 0x4f, 0x0a, 0xaa, 0xe8, 0xab, 0x53, 0xbc, 0x9e, 0x19, 0x65, 0x80, 0x98, 0x54, 0x0b, 0xa9,
+	0x48, 0x4a, 0x15, 0x27, 0xdf, 0x26, 0x29, 0xd7, 0x74, 0x42, 0x98, 0x14, 0x45, 0xbb, 0x1d, 0x8c,
+	0x72, 0x99, 0xcb, 0xa6, 0x24, 0x75, 0xd5, 0x76, 0xa3, 0x19, 0x3c, 0x98, 0xab, 0xfc, 0xac, 0xe2,
+	0x54, 0xf3, 0x37, 0x4a, 0x71, 0xed, 0xf9, 0x70, 0x9f, 0xd5, 0x50, 0x56, 0xbe, 0x15, 0x5a, 0xe3,
+	0xfd, 0xa4, 0x83, 0x5e, 0x08, 0xc3, 0x8c, 0x2b, 0x56, 0x89, 0xb2, 0x36, 0xf4, 0xed, 0x66, 0x6a,
+	0xb6, 0xa2, 0x18, 0x0e, 0x37, 0xd5, 0x12, 0xae, 0x4a, 0x59, 0x28, 0x5e, 0xab, 0xd2, 0xba, 0xf1,
+	0x36, 0x6b, 0x54, 0xdd, 0xa4, 0x83, 0xd1, 0x6b, 0x38, 0xe8, 0x77, 0x66, 0x72, 0x9b, 0xff, 0x21,
+	0xec, 0x35, 0x4b, 0xca, 0xb7, 0x43, 0x67, 0xec, 0x26, 0x37, 0x28, 0x3a, 0x86, 0x91, 0xa9, 0xd0,
+	0x7b, 0x8e, 0xe0, 0xde, 0x17, 0xb9, 0x76, 0x6c, 0x41, 0xf4, 0xd3, 0x82, 0x87, 0x73, 0x95, 0xbf,
+	0xd7, 0xb4, 0xd2, 0x53, 0x91, 0x65, 0xa2, 0xc8, 0xb7, 0x78, 0xf6, 0x1a, 0xb6, 0xa1, 0xe1, 0x21,
+	0x80, 0x4f, 0xa2, 0x10, 0xea, 0xfc, 0x83, 0x58, 0x70, 0xdf, 0x69, 0x46, 0x46, 0xc7, 0x9b, 0x80,
+	0x93, 0x8a, 0xcc, 0x77, 0x43, 0x6b, 0x3c, 0x8c, 0x8f, 0x70, 0x9b, 0x0c, 0xae, 0x93, 0xc1, 0x37,
+	0xc9, 0xe0, 0x33, 0x29, 0x8a, 0xa9, 0x7b, 0xf5, 0xe7, 0xe9, 0x20, 0xa9, 0xb9, 0xd1, 0x11, 0x3c,
+	0xfe, 0xef, 0xa9, 0xba, 0xf7, 0x88, 0x7f, 0xdb, 0xe0, 0xcc, 0x55, 0xee, 0x7d, 0x85, 0xa1, 0x19,
+	0xd4, 0x31, 0xde, 0xf6, 0x3f, 0xe0, 0xcd, 0x20, 0x82, 0x17, 0xbb, 0xb0, 0xfb, 0x4f, 0xf8, 0x19,
+	0xf6, 0xd7, 0xc9, 0x3c, 0xbb, 0xa3, 0xc4, 0x4c, 0xea, 0x20, 0xbe, 0x3b, 0xb7, 0x37, 0xd3, 0x70,
+	0xb0, 0x91, 0xca, 0xc9, 0xad, 0x1a, 0x26, 0x3d, 0x78, 0xb9, 0x13, 0xbd, 0x73, 0x9d, 0xbe, 0xbb,
+	0x5a, 0x22, 0xeb, 0x7a, 0x89, 0xac, 0xbf, 0x4b, 0x64, 0xfd, 0x58, 0xa1, 0xc1, 0xf5, 0x0a, 0x0d,
+	0x7e, 0xad, 0xd0, 0xe0, 0xe3, 0x69, 0x2e, 0xf4, 0xf9, 0x45, 0x8a, 0x99, 0x5c, 0x90, 0x56, 0x9a,
+	0x30, 0x5a, 0x9d, 0x74, 0x77, 0x79, 0x49, 0xcc, 0x23, 0xfd, 0x5e, 0x72, 0x95, 0xee, 0x35, 0x47,
+	0xf5, 0xfc, 0x5f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xdc, 0x07, 0x5a, 0x59, 0xbf, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -265,6 +381,7 @@ const _ = grpc.SupportPackageIsVersion4
 type MsgClient interface {
 	CreateAsset(ctx context.Context, in *MsgCreateAsset, opts ...grpc.CallOption) (*MsgCreateAssetResponse, error)
 	CreateLot(ctx context.Context, in *MsgCreateLot, opts ...grpc.CallOption) (*MsgCreateLotResponse, error)
+	StartBidding(ctx context.Context, in *MsgStartBidding, opts ...grpc.CallOption) (*MsgStartBiddingResponse, error)
 }
 
 type msgClient struct {
@@ -293,10 +410,20 @@ func (c *msgClient) CreateLot(ctx context.Context, in *MsgCreateLot, opts ...grp
 	return out, nil
 }
 
+func (c *msgClient) StartBidding(ctx context.Context, in *MsgStartBidding, opts ...grpc.CallOption) (*MsgStartBiddingResponse, error) {
+	out := new(MsgStartBiddingResponse)
+	err := c.cc.Invoke(ctx, "/nasa70.carauction.carauction.Msg/StartBidding", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	CreateAsset(context.Context, *MsgCreateAsset) (*MsgCreateAssetResponse, error)
 	CreateLot(context.Context, *MsgCreateLot) (*MsgCreateLotResponse, error)
+	StartBidding(context.Context, *MsgStartBidding) (*MsgStartBiddingResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -308,6 +435,9 @@ func (*UnimplementedMsgServer) CreateAsset(ctx context.Context, req *MsgCreateAs
 }
 func (*UnimplementedMsgServer) CreateLot(ctx context.Context, req *MsgCreateLot) (*MsgCreateLotResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateLot not implemented")
+}
+func (*UnimplementedMsgServer) StartBidding(ctx context.Context, req *MsgStartBidding) (*MsgStartBiddingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartBidding not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -350,6 +480,24 @@ func _Msg_CreateLot_Handler(srv interface{}, ctx context.Context, dec func(inter
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_StartBidding_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgStartBidding)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).StartBidding(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/nasa70.carauction.carauction.Msg/StartBidding",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).StartBidding(ctx, req.(*MsgStartBidding))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "nasa70.carauction.carauction.Msg",
 	HandlerType: (*MsgServer)(nil),
@@ -361,6 +509,10 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateLot",
 			Handler:    _Msg_CreateLot_Handler,
+		},
+		{
+			MethodName: "StartBidding",
+			Handler:    _Msg_StartBidding_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -508,6 +660,79 @@ func (m *MsgCreateLotResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgStartBidding) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgStartBidding) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgStartBidding) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.Bid.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintTx(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0x22
+	if m.FinishTime != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.FinishTime))
+		i--
+		dAtA[i] = 0x18
+	}
+	if m.LotId != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.LotId))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgStartBiddingResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgStartBiddingResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgStartBiddingResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -577,6 +802,36 @@ func (m *MsgCreateLotResponse) Size() (n int) {
 	if m.LotId != 0 {
 		n += 1 + sovTx(uint64(m.LotId))
 	}
+	return n
+}
+
+func (m *MsgStartBidding) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.LotId != 0 {
+		n += 1 + sovTx(uint64(m.LotId))
+	}
+	if m.FinishTime != 0 {
+		n += 1 + sovTx(uint64(m.FinishTime))
+	}
+	l = m.Bid.Size()
+	n += 1 + l + sovTx(uint64(l))
+	return n
+}
+
+func (m *MsgStartBiddingResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
 	return n
 }
 
@@ -975,6 +1230,209 @@ func (m *MsgCreateLotResponse) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgStartBidding) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgStartBidding: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgStartBidding: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LotId", wireType)
+			}
+			m.LotId = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LotId |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field FinishTime", wireType)
+			}
+			m.FinishTime = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.FinishTime |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Bid", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.Bid.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgStartBiddingResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgStartBiddingResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgStartBiddingResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
 		default:
 			iNdEx = preIndex
 			skippy, err := skipTx(dAtA[iNdEx:])

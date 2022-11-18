@@ -26,7 +26,7 @@ const (
 //}
 
 func TestCreateAsset(t *testing.T) {
-	msgServer, context := setupMsgServer(t)
+	msgServer, _, context := setupMsgServer(t)
 	createResponse, err := msgServer.CreateAsset(context, &types.MsgCreateAsset{
 		Creator:     nasa,
 		Description: "asset-1 description",
@@ -39,7 +39,7 @@ func TestCreateAsset(t *testing.T) {
 
 func TestCreateTwoAssets(t *testing.T) {
 
-	msgServer, context := setupMsgServer(t)
+	msgServer, _, context := setupMsgServer(t)
 	createResponse, err := msgServer.CreateAsset(context, &types.MsgCreateAsset{
 		Creator:     nasa,
 		Description: "asset-1 description",

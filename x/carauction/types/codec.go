@@ -10,6 +10,7 @@ import (
 func RegisterCodec(cdc *codec.LegacyAmino) {
 	cdc.RegisterConcrete(&MsgCreateAsset{}, "carauction/CreateAsset", nil)
 	cdc.RegisterConcrete(&MsgCreateLot{}, "carauction/CreateLot", nil)
+	cdc.RegisterConcrete(&MsgStartBidding{}, "carauction/StartBidding", nil)
 	// this line is used by starport scaffolding # 2
 }
 
@@ -19,6 +20,9 @@ func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	)
 	registry.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgCreateLot{},
+	)
+	registry.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgStartBidding{},
 	)
 	// this line is used by starport scaffolding # 3
 

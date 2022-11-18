@@ -10,7 +10,7 @@ import (
 )
 
 func TestCreateLot(t *testing.T) {
-	msgServer, context := setupMsgServer(t)
+	msgServer, _, context := setupMsgServer(t)
 	createResponse, err := msgServer.CreateLot(context, &types.MsgCreateLot{
 		Creator: nasa,
 		Assets:  []uint64{2, 3},
