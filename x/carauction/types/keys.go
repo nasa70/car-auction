@@ -34,3 +34,8 @@ const (
 const (
 	AuctionInfoKey = "AuctionInfo-value-"
 )
+
+const (
+	LotsQueueKey      = "LotsQueue-value-"
+	LotsQueueCountKey = "LotsQueue-count-"
+)

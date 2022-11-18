@@ -17,6 +17,7 @@ func DefaultGenesis() *GenesisState {
 			LastInQueueLotId:  0,
 			FirstFinishTime:   0,
 		},
+		LotsQueueList: []LotsQueue{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
@@ -48,6 +49,18 @@ func (gs GenesisState) Validate() error {
 			return fmt.Errorf("assets id should be lower or equal than the last id")
 		}
 		assetsIdMap[elem.AssetId] = true
+	}
+	// Check for duplicated ID in lotsQueue
+	lotsQueueIdMap := make(map[uint64]bool)
+	lotsQueueCount := gs.GetLotsQueueCount()
+	for _, elem := range gs.LotsQueueList {
+		if _, ok := lotsQueueIdMap[elem.LotId]; ok {
+			return fmt.Errorf("duplicated id for lotsQueue")
+		}
+		if elem.LotId >= lotsQueueCount {
+			return fmt.Errorf("lotsQueue id should be lower or equal than the last id")
+		}
+		lotsQueueIdMap[elem.LotId] = true
 	}
 	// this line is used by starport scaffolding # genesis/types/validate
 

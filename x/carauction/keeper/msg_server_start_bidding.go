@@ -11,6 +11,7 @@ import (
 const minBiddingDuration = time.Hour
 
 func (k msgServer) StartBidding(goCtx context.Context, msg *types.MsgStartBidding) (*types.MsgStartBiddingResponse, error) {
+
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	lot, found := k.Keeper.GetLots(ctx, msg.LotId)

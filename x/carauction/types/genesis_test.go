@@ -45,6 +45,15 @@ func TestGenesisState_Validate(t *testing.T) {
 					LastInQueueLotId:  0,
 					FirstFinishTime:   0,
 				},
+				LotsQueueList: []types.LotsQueue{
+					{
+						LotId: 1,
+					},
+					{
+						LotId: 2,
+					},
+				},
+				LotsQueueCount: 2,
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -98,6 +107,32 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 				},
 				AssetsCount: 0,
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated lotsQueue",
+			genState: &types.GenesisState{
+				LotsQueueList: []types.LotsQueue{
+					{
+						LotId: 1,
+					},
+					{
+						LotId: 1,
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "invalid lotsQueue count",
+			genState: &types.GenesisState{
+				LotsQueueList: []types.LotsQueue{
+					{
+						LotId: 1,
+					},
+				},
+				LotsQueueCount: 0,
 			},
 			valid: false,
 		},

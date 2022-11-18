@@ -8,6 +8,7 @@ import "carauction/params.proto";
 import "carauction/lots.proto";
 import "carauction/assets.proto";
 import "carauction/auction_info.proto";
+import "carauction/lots_queue.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/nasa70/car-auction/x/carauction/types";
@@ -42,6 +43,16 @@ service Query {
 	rpc AuctionInfo(QueryGetAuctionInfoRequest) returns (QueryGetAuctionInfoResponse) {
 		option (google.api.http).get = "/nasa70/car-auction/carauction/auction_info";
 	}
+// Queries a LotsQueue by id.
+	rpc LotsQueue(QueryGetLotsQueueRequest) returns (QueryGetLotsQueueResponse) {
+		option (google.api.http).get = "/nasa70/car-auction/carauction/lots_queue/{id}";
+	}
+
+	// Queries a list of LotsQueue items.
+	rpc LotsQueueAll(QueryAllLotsQueueRequest) returns (QueryAllLotsQueueResponse) {
+		option (google.api.http).get = "/nasa70/car-auction/carauction/lots_queue";
+	}
+
 // this line is used by starport scaffolding # 2
 }
 
@@ -93,4 +104,21 @@ message QueryGetAuctionInfoRequest {}
 message QueryGetAuctionInfoResponse {
 	AuctionInfo AuctionInfo = 1 [(gogoproto.nullable) = false];
 }
+message QueryGetLotsQueueRequest {
+	uint64 id = 1;
+}
+
+message QueryGetLotsQueueResponse {
+	LotsQueue LotsQueue = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllLotsQueueRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllLotsQueueResponse {
+	repeated LotsQueue LotsQueue = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
 // this line is used by starport scaffolding # 3

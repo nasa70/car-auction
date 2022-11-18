@@ -37,6 +37,15 @@ func TestGenesis(t *testing.T) {
 			LastInQueueLotId:  28,
 			FirstFinishTime:   1,
 		},
+		LotsQueueList: []types.LotsQueue{
+			{
+				LotId: 1,
+			},
+			{
+				LotId: 2,
+			},
+		},
+		LotsQueueCount: 2,
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -53,5 +62,7 @@ func TestGenesis(t *testing.T) {
 	require.ElementsMatch(t, genesisState.AssetsList, got.AssetsList)
 	require.Equal(t, genesisState.AssetsCount, got.AssetsCount)
 	require.Equal(t, genesisState.AuctionInfo, got.AuctionInfo)
+	require.ElementsMatch(t, genesisState.LotsQueueList, got.LotsQueueList)
+	require.Equal(t, genesisState.LotsQueueCount, got.LotsQueueCount)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

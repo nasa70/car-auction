@@ -1,0 +1,12 @@
+syntax = "proto3";
+package nasa70.carauction.carauction;
+
+option go_package = "github.com/nasa70/car-auction/x/carauction/types";
+
+message LotsQueue {
+  uint64 lotId = 1; 
+  uint64 prevLotId = 2; 
+  uint64 nextLotId = 3; 
+  uint64 finishTime = 4; 
+  
+}

@@ -6,6 +6,7 @@ import "carauction/params.proto";
 import "carauction/lots.proto";
 import "carauction/assets.proto";
 import "carauction/auction_info.proto";
+import "carauction/lots_queue.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/nasa70/car-auction/x/carauction/types";
@@ -18,5 +19,7 @@ message GenesisState {
   repeated Assets assetsList = 4 [(gogoproto.nullable) = false];
   uint64 assetsCount = 5;
   AuctionInfo auctionInfo = 6;
+  repeated LotsQueue lotsQueueList = 7 [(gogoproto.nullable) = false];
+  uint64 lotsQueueCount = 8;
   // this line is used by starport scaffolding # genesis/proto/state
 }
