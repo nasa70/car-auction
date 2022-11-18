@@ -22171,6 +22171,12 @@ definitions:
       assetId:
         type: string
         format: uint64
+  nasa70.carauction.carauction.MsgCreateLotResponse:
+    type: object
+    properties:
+      lotId:
+        type: string
+        format: uint64
   nasa70.carauction.carauction.Params:
     type: object
     description: Params defines the parameters for the module.
